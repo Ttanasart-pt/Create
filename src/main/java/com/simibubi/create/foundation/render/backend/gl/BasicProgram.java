@@ -9,6 +9,8 @@ import com.simibubi.create.foundation.utility.AnimationTickHolder;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.vector.Matrix4f;
 
+import java.nio.Buffer;
+
 public class BasicProgram extends GlProgram {
     protected final int uTime;
     protected final int uViewProjection;
@@ -53,9 +55,9 @@ public class BasicProgram extends GlProgram {
     }
 
     protected static void uploadMatrixUniform(int uniform, Matrix4f mat) {
-        Backend.MATRIX_BUFFER.position(0);
+        ((Buffer)Backend.MATRIX_BUFFER).position(0);
         mat.write(Backend.MATRIX_BUFFER);
-        Backend.MATRIX_BUFFER.rewind();
+        ((Buffer)Backend.MATRIX_BUFFER).rewind();
         GL20.glUniformMatrix4fv(uniform, false, Backend.MATRIX_BUFFER);
     }
 }
