@@ -14,6 +14,8 @@ import com.simibubi.create.content.contraptions.components.actors.HarvesterTileE
 import com.simibubi.create.content.contraptions.components.actors.PortableFluidInterfaceTileEntity;
 import com.simibubi.create.content.contraptions.components.actors.PortableItemInterfaceTileEntity;
 import com.simibubi.create.content.contraptions.components.actors.PortableStorageInterfaceRenderer;
+import com.simibubi.create.content.contraptions.components.chopper.MechanicalChopRenderer;
+import com.simibubi.create.content.contraptions.components.chopper.MechanicalChopTileEntity;
 import com.simibubi.create.content.contraptions.components.clock.CuckooClockRenderer;
 import com.simibubi.create.content.contraptions.components.clock.CuckooClockTileEntity;
 import com.simibubi.create.content.contraptions.components.crafter.MechanicalCrafterInstance;
@@ -473,6 +475,13 @@ public class AllTileEntities {
 		.tileEntity("mechanical_press", MechanicalPressTileEntity::new)
 		.validBlocks(AllBlocks.MECHANICAL_PRESS)
 		.renderer(() -> MechanicalPressRenderer::new)
+		.onRegister(ShaftInstance::register)
+		.register();
+
+	public static final TileEntityEntry<MechanicalChopTileEntity> MECHANICAL_CHOP = Create.registrate()
+		.tileEntity("mechanical_chop", MechanicalChopTileEntity::new)
+		.validBlocks(AllBlocks.MECHANICAL_CHOP)
+		.renderer(() -> MechanicalChopRenderer::new)
 		.onRegister(ShaftInstance::register)
 		.register();
 

@@ -48,8 +48,7 @@ public class AssetLookup {
 	 */
 	public static <I extends BlockItem> ItemModelBuilder customItemModel(DataGenContext<Item, I> ctx,
 		RegistrateItemModelProvider prov) {
-		return prov.blockItem(() -> ctx.getEntry()
-			.getBlock(), "/item");
+		return prov.blockItem(() -> ctx.getEntry().getBlock(), "/item");
 	}
 
 	/**

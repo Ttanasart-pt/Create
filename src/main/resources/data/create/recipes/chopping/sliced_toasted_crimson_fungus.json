@@ -1,0 +1,14 @@
+{
+    "type": "create:chopping",
+    "ingredients": [
+        {
+            "item": "someassemblyrequired:toasted_crimson_fungus"
+        }
+    ],
+    "results": [
+        {
+            "item": "someassemblyrequired:sliced_toasted_crimson_fungus",
+            "count": 2
+        }
+    ]
+}

@@ -1,5 +1,6 @@
 package com.simibubi.create.foundation.render.backend.gl.versioned;
 
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.util.function.Consumer;
 
@@ -21,7 +22,7 @@ public enum MapBuffer implements GlVersioned {
             ByteBuffer buffer = GL30.glMapBufferRange(target, offset, length, GL30.GL_MAP_WRITE_BIT | GL30.GL_MAP_INVALIDATE_RANGE_BIT);
 
             upload.accept(buffer);
-            buffer.rewind();
+            ((Buffer)buffer).rewind();
 
             GL30.glUnmapBuffer(target);
         }

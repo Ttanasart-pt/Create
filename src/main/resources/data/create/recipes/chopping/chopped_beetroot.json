@@ -1,0 +1,14 @@
+{
+    "type": "create:chopping",
+    "ingredients": [
+        {
+            "item": "minecraft:beetroot"
+        }
+    ],
+    "results": [
+        {
+            "item": "someassemblyrequired:chopped_beetroot",
+            "count": 2
+        }
+    ]
+}

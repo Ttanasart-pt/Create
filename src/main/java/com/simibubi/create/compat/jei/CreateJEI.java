@@ -31,6 +31,7 @@ import com.simibubi.create.compat.jei.category.MysteriousItemConversionCategory;
 import com.simibubi.create.compat.jei.category.PackingCategory;
 import com.simibubi.create.compat.jei.category.PolishingCategory;
 import com.simibubi.create.compat.jei.category.PressingCategory;
+import com.simibubi.create.compat.jei.category.ChoppingCategory;
 import com.simibubi.create.compat.jei.category.ProcessingViaFanCategory;
 import com.simibubi.create.compat.jei.category.SawingCategory;
 import com.simibubi.create.compat.jei.category.SpoutCategory;
@@ -85,116 +86,120 @@ public class CreateJEI implements IModPlugin {
 		.catalyst(AllBlocks.MILLSTONE::get)
 		.build(),
 
-		crushing = register("crushing", CrushingCategory::new).recipes(AllRecipeTypes.CRUSHING)
-			.recipesExcluding(AllRecipeTypes.MILLING::getType, AllRecipeTypes.CRUSHING::getType)
-			.catalyst(AllBlocks.CRUSHING_WHEEL::get)
-			.build(),
+	crushing = register("crushing", CrushingCategory::new).recipes(AllRecipeTypes.CRUSHING)
+		.recipesExcluding(AllRecipeTypes.MILLING::getType, AllRecipeTypes.CRUSHING::getType)
+		.catalyst(AllBlocks.CRUSHING_WHEEL::get)
+		.build(),
 
-		pressing = register("pressing", PressingCategory::new).recipes(AllRecipeTypes.PRESSING)
-			.catalyst(AllBlocks.MECHANICAL_PRESS::get)
-			.build(),
+	pressing = register("pressing", PressingCategory::new).recipes(AllRecipeTypes.PRESSING)
+		.catalyst(AllBlocks.MECHANICAL_PRESS::get)
+		.build(),
 
-		washing = register("fan_washing", FanWashingCategory::new).recipes(AllRecipeTypes.SPLASHING)
-			.catalystStack(ProcessingViaFanCategory.getFan("fan_washing"))
-			.build(),
+	chopping = register("chopping", ChoppingCategory::new).recipes(AllRecipeTypes.CHOPPING)
+		.catalyst(AllBlocks.MECHANICAL_CHOP::get)
+		.build(),
 
-		smoking = register("fan_smoking", FanSmokingCategory::new).recipes(() -> IRecipeType.SMOKING)
-			.catalystStack(ProcessingViaFanCategory.getFan("fan_smoking"))
-			.build(),
+	washing = register("fan_washing", FanWashingCategory::new).recipes(AllRecipeTypes.SPLASHING)
+		.catalystStack(ProcessingViaFanCategory.getFan("fan_washing"))
+		.build(),
 
-		blasting = register("fan_blasting", FanBlastingCategory::new)
-			.recipesExcluding(() -> IRecipeType.SMELTING, () -> IRecipeType.SMOKING)
-			.catalystStack(ProcessingViaFanCategory.getFan("fan_blasting"))
-			.build(),
+	smoking = register("fan_smoking", FanSmokingCategory::new).recipes(() -> IRecipeType.SMOKING)
+		.catalystStack(ProcessingViaFanCategory.getFan("fan_smoking"))
+		.build(),
 
-		blockzapper = register("blockzapper_upgrade", BlockzapperUpgradeCategory::new)
-			.recipes(AllRecipeTypes.BLOCKZAPPER_UPGRADE.serializer.getRegistryName())
-			.catalyst(AllItems.BLOCKZAPPER::get)
-			.build(),
+	blasting = register("fan_blasting", FanBlastingCategory::new)
+		.recipesExcluding(() -> IRecipeType.SMELTING, () -> IRecipeType.SMOKING)
+		.catalystStack(ProcessingViaFanCategory.getFan("fan_blasting"))
+		.build(),
 
-		mixing = register("mixing", MixingCategory::standard).recipes(AllRecipeTypes.MIXING::getType)
-			.catalyst(AllBlocks.MECHANICAL_MIXER::get)
-			.catalyst(AllBlocks.BASIN::get)
-			.build(),
+	blockzapper = register("blockzapper_upgrade", BlockzapperUpgradeCategory::new)
+		.recipes(AllRecipeTypes.BLOCKZAPPER_UPGRADE.serializer.getRegistryName())
+		.catalyst(AllItems.BLOCKZAPPER::get)
+		.build(),
 
-		autoShapeless = register("automatic_shapeless", MixingCategory::autoShapeless)
-			.recipes(r -> r.getSerializer() == IRecipeSerializer.CRAFTING_SHAPELESS && r.getIngredients()
-				.size() > 1 && !MechanicalPressTileEntity.canCompress(r.getIngredients()),
-				BasinRecipe::convertShapeless)
-			.catalyst(AllBlocks.MECHANICAL_MIXER::get)
-			.catalyst(AllBlocks.BASIN::get)
-			.enableWhen(c -> c.allowShapelessInMixer)
-			.build(),
+	mixing = register("mixing", MixingCategory::standard).recipes(AllRecipeTypes.MIXING::getType)
+		.catalyst(AllBlocks.MECHANICAL_MIXER::get)
+		.catalyst(AllBlocks.BASIN::get)
+		.build(),
 
-		brewing = register("automatic_brewing", MixingCategory::autoBrewing)
-			.recipeList(PotionMixingRecipeManager::getAllBrewingRecipes)
-			.catalyst(AllBlocks.MECHANICAL_MIXER::get)
-			.catalyst(AllBlocks.BASIN::get)
-			.build(),
+	autoShapeless = register("automatic_shapeless", MixingCategory::autoShapeless)
+		.recipes(r -> r.getSerializer() == IRecipeSerializer.CRAFTING_SHAPELESS && r.getIngredients()
+			.size() > 1 && !MechanicalPressTileEntity.canCompress(r.getIngredients()),
+			BasinRecipe::convertShapeless)
+		.catalyst(AllBlocks.MECHANICAL_MIXER::get)
+		.catalyst(AllBlocks.BASIN::get)
+		.enableWhen(c -> c.allowShapelessInMixer)
+		.build(),
 
-		sawing = register("sawing", SawingCategory::new).recipes(AllRecipeTypes.CUTTING)
-			.catalyst(AllBlocks.MECHANICAL_SAW::get)
-			.build(),
+	brewing = register("automatic_brewing", MixingCategory::autoBrewing)
+		.recipeList(PotionMixingRecipeManager::getAllBrewingRecipes)
+		.catalyst(AllBlocks.MECHANICAL_MIXER::get)
+		.catalyst(AllBlocks.BASIN::get)
+		.build(),
 
-		blockCutting = register("block_cutting", () -> new BlockCuttingCategory(Items.STONE_BRICK_STAIRS))
-			.recipeList(() -> CondensedBlockCuttingRecipe.condenseRecipes(findRecipesByType(IRecipeType.STONECUTTING)))
-			.catalyst(AllBlocks.MECHANICAL_SAW::get)
-			.enableWhen(c -> c.allowStonecuttingOnSaw)
-			.build(),
+	sawing = register("sawing", SawingCategory::new).recipes(AllRecipeTypes.CUTTING)
+		.catalyst(AllBlocks.MECHANICAL_SAW::get)
+		.build(),
 
-		woodCutting = register("wood_cutting", () -> new BlockCuttingCategory(Items.OAK_STAIRS))
-			.recipeList(() -> CondensedBlockCuttingRecipe.condenseRecipes(findRecipesByType(SawTileEntity.woodcuttingRecipeType.getValue())))
-			.catalyst(AllBlocks.MECHANICAL_SAW::get)
-			.enableWhenBool(c -> c.allowWoodcuttingOnSaw.get() && ModList.get().isLoaded("druidcraft"))
-			.build(),
+	blockCutting = register("block_cutting", () -> new BlockCuttingCategory(Items.STONE_BRICK_STAIRS))
+		.recipeList(() -> CondensedBlockCuttingRecipe.condenseRecipes(findRecipesByType(IRecipeType.STONECUTTING)))
+		.catalyst(AllBlocks.MECHANICAL_SAW::get)
+		.enableWhen(c -> c.allowStonecuttingOnSaw)
+		.build(),
 
-		packing = register("packing", PackingCategory::standard).recipes(AllRecipeTypes.COMPACTING)
-			.catalyst(AllBlocks.MECHANICAL_PRESS::get)
-			.catalyst(AllBlocks.BASIN::get)
-			.build(),
+	woodCutting = register("wood_cutting", () -> new BlockCuttingCategory(Items.OAK_STAIRS))
+		.recipeList(() -> CondensedBlockCuttingRecipe.condenseRecipes(findRecipesByType(SawTileEntity.woodcuttingRecipeType.getValue())))
+		.catalyst(AllBlocks.MECHANICAL_SAW::get)
+		.enableWhenBool(c -> c.allowWoodcuttingOnSaw.get() && ModList.get().isLoaded("druidcraft"))
+		.build(),
 
-		autoSquare = register("automatic_packing", PackingCategory::autoSquare)
-			.recipes(r -> (r instanceof ICraftingRecipe) && MechanicalPressTileEntity.canCompress(r.getIngredients()),
-				BasinRecipe::convertShapeless)
-			.catalyst(AllBlocks.MECHANICAL_PRESS::get)
-			.catalyst(AllBlocks.BASIN::get)
-			.enableWhen(c -> c.allowShapedSquareInPress)
-			.build(),
+	packing = register("packing", PackingCategory::standard).recipes(AllRecipeTypes.COMPACTING)
+		.catalyst(AllBlocks.MECHANICAL_PRESS::get)
+		.catalyst(AllBlocks.BASIN::get)
+		.build(),
 
-		polishing = register("sandpaper_polishing", PolishingCategory::new).recipes(AllRecipeTypes.SANDPAPER_POLISHING)
-			.catalyst(AllItems.SAND_PAPER::get)
-			.catalyst(AllItems.RED_SAND_PAPER::get)
-			.build(),
+	autoSquare = register("automatic_packing", PackingCategory::autoSquare)
+		.recipes(r -> (r instanceof ICraftingRecipe) && MechanicalPressTileEntity.canCompress(r.getIngredients()),
+			BasinRecipe::convertShapeless)
+		.catalyst(AllBlocks.MECHANICAL_PRESS::get)
+		.catalyst(AllBlocks.BASIN::get)
+		.enableWhen(c -> c.allowShapedSquareInPress)
+		.build(),
 
-		mysteryConversion = register("mystery_conversion", MysteriousItemConversionCategory::new)
-			.recipeList(MysteriousItemConversionCategory::getRecipes)
-			.build(),
+	polishing = register("sandpaper_polishing", PolishingCategory::new).recipes(AllRecipeTypes.SANDPAPER_POLISHING)
+		.catalyst(AllItems.SAND_PAPER::get)
+		.catalyst(AllItems.RED_SAND_PAPER::get)
+		.build(),
 
-		spoutFilling = register("spout_filling", SpoutCategory::new).recipes(AllRecipeTypes.FILLING)
-			.recipeList(() -> SpoutCategory.getRecipes(ingredientManager))
-			.catalyst(AllBlocks.SPOUT::get)
-			.build(),
+	mysteryConversion = register("mystery_conversion", MysteriousItemConversionCategory::new)
+		.recipeList(MysteriousItemConversionCategory::getRecipes)
+		.build(),
 
-		draining = register("draining", ItemDrainCategory::new)
-			.recipeList(() -> ItemDrainCategory.getRecipes(ingredientManager))
-			.recipes(AllRecipeTypes.EMPTYING)
-			.catalyst(AllBlocks.ITEM_DRAIN::get)
-			.build(),
+	spoutFilling = register("spout_filling", SpoutCategory::new).recipes(AllRecipeTypes.FILLING)
+		.recipeList(() -> SpoutCategory.getRecipes(ingredientManager))
+		.catalyst(AllBlocks.SPOUT::get)
+		.build(),
 
-		autoShaped = register("automatic_shaped", MechanicalCraftingCategory::new)
-			.recipes(r -> r.getSerializer() == IRecipeSerializer.CRAFTING_SHAPELESS && r.getIngredients()
-				.size() == 1)
-			.recipes(
-				r -> (r.getType() == IRecipeType.CRAFTING && r.getType() != AllRecipeTypes.MECHANICAL_CRAFTING.type)
-					&& (r instanceof ShapedRecipe))
+	draining = register("draining", ItemDrainCategory::new)
+		.recipeList(() -> ItemDrainCategory.getRecipes(ingredientManager))
+		.recipes(AllRecipeTypes.EMPTYING)
+		.catalyst(AllBlocks.ITEM_DRAIN::get)
+		.build(),
+
+	autoShaped = register("automatic_shaped", MechanicalCraftingCategory::new)
+		.recipes(r -> r.getSerializer() == IRecipeSerializer.CRAFTING_SHAPELESS && r.getIngredients()
+			.size() == 1)
+		.recipes(
+			r -> (r.getType() == IRecipeType.CRAFTING && r.getType() != AllRecipeTypes.MECHANICAL_CRAFTING.type)
+				&& (r instanceof ShapedRecipe))
+		.catalyst(AllBlocks.MECHANICAL_CRAFTER::get)
+		.enableWhen(c -> c.allowRegularCraftingInCrafter)
+		.build(),
+
+	mechanicalCrafting =
+		register("mechanical_crafting", MechanicalCraftingCategory::new).recipes(AllRecipeTypes.MECHANICAL_CRAFTING)
 			.catalyst(AllBlocks.MECHANICAL_CRAFTER::get)
-			.enableWhen(c -> c.allowRegularCraftingInCrafter)
-			.build(),
-
-		mechanicalCrafting =
-			register("mechanical_crafting", MechanicalCraftingCategory::new).recipes(AllRecipeTypes.MECHANICAL_CRAFTING)
-				.catalyst(AllBlocks.MECHANICAL_CRAFTER::get)
-				.build()
+			.build()
 
 	;
 

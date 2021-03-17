@@ -1,0 +1,14 @@
+{
+    "type": "create:chopping",
+    "ingredients": [
+        {
+            "item": "minecraft:carrot"
+        }
+    ],
+    "results": [
+        {
+            "item": "someassemblyrequired:chopped_carrot",
+            "count": 2
+        }
+    ]
+}

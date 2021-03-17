@@ -1,0 +1,14 @@
+{
+    "type": "create:chopping",
+    "ingredients": [
+        {
+            "item": "minecraft:golden_apple"
+        }
+    ],
+    "results": [
+        {
+            "item": "someassemblyrequired:golden_apple_slices",
+            "count": 2
+        }
+    ]
+}

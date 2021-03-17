@@ -54,7 +54,7 @@ public class PressingCategory extends CreateRecipeCategory<PressingRecipe> {
 	}
 
 	@Override
-	public void draw(PressingRecipe recipe, MatrixStack matrixStack,  double mouseX, double mouseY) {
+	public void draw(PressingRecipe recipe, MatrixStack matrixStack, double mouseX, double mouseY) {
 		AllGuiTextures.JEI_SLOT.draw(matrixStack, 26, 50);
 		getRenderedSlot(recipe, 0).draw(matrixStack, 131, 50);
 		if (recipe.getRollableResults()

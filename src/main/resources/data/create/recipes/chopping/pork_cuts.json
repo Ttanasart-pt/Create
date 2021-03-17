@@ -1,0 +1,14 @@
+{
+	"type": "create:chopping",
+	"ingredients": [
+		{
+			"item": "minecraft:porkchop"
+		}
+	],
+	"results": [
+		{
+			"item": "someassemblyrequired:pork_cuts",
+			"count": 3
+		}
+	]
+}

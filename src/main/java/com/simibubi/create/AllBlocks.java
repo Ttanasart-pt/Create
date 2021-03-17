@@ -24,6 +24,7 @@ import com.simibubi.create.content.contraptions.components.actors.PortableStorag
 import com.simibubi.create.content.contraptions.components.actors.SawMovementBehaviour;
 import com.simibubi.create.content.contraptions.components.actors.SeatBlock;
 import com.simibubi.create.content.contraptions.components.actors.SeatMovementBehaviour;
+import com.simibubi.create.content.contraptions.components.chopper.MechanicalChopBlock;
 import com.simibubi.create.content.contraptions.components.clock.CuckooClockBlock;
 import com.simibubi.create.content.contraptions.components.crafter.CrafterCTBehaviour;
 import com.simibubi.create.content.contraptions.components.crafter.MechanicalCrafterBlock;
@@ -417,6 +418,16 @@ public class AllBlocks {
 
 	public static final BlockEntry<MechanicalPressBlock> MECHANICAL_PRESS =
 		REGISTRATE.block("mechanical_press", MechanicalPressBlock::new)
+			.initialProperties(SharedProperties::stone)
+			.properties(AbstractBlock.Properties::nonOpaque)
+			.blockstate(BlockStateGen.horizontalBlockProvider(true))
+			.transform(StressConfigDefaults.setImpact(8.0))
+			.item(BasinOperatorBlockItem::new)
+			.transform(customItemModel())
+			.register();
+
+	public static final BlockEntry<MechanicalChopBlock> MECHANICAL_CHOP =
+		REGISTRATE.block("mechanical_chop", MechanicalChopBlock::new)
 			.initialProperties(SharedProperties::stone)
 			.properties(AbstractBlock.Properties::nonOpaque)
 			.blockstate(BlockStateGen.horizontalBlockProvider(true))

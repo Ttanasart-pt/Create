@@ -1,0 +1,14 @@
+{
+    "type": "create:chopping",
+    "ingredients": [
+        {
+            "tag": "forge:crops/tomato"
+        }
+    ],
+    "results": [
+        {
+            "item": "someassemblyrequired:tomato_slices",
+            "count": 2
+        }
+    ]
+}

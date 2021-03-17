@@ -1,0 +1,14 @@
+{
+    "type": "create:chopping",
+    "ingredients": [
+        {
+            "item": "minecraft:bread"
+        }
+    ],
+    "results": [
+        {
+            "item": "someassemblyrequired:bread_slice",
+            "count": 4
+        }
+    ]
+}
