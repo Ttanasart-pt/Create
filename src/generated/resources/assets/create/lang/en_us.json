@@ -1803,6 +1803,87 @@
 	"create.tooltip.randomWipDescription7": "This one maybe isn't for you. What about that one?",
 	"create.tooltip.randomWipDescription8": "Use it and regret your decision immediately.",
 
-	"_": "Thank you for translating Create!"
+	"_": "Thank you for translating Create!",
+
+	"_": "->------------------------]  Foodstuffs  [------------------------<-",
+
+    "fluid.create.milk_chocolate": "Chocolate Milk",
+    "fluid.create.milk_berry": "Berry Milk",
+
+    "fluid.create.tea_lavender": "Lavender Tea",
+    "fluid.create.tea_green": "Green Tea",
+    "fluid.create.tea_chorus": "Chorus Tea",
+    "fluid.create.tea_dandelion": "Dandelion Tea",
+    "fluid.create.tea_black": "Black Tea",
+
+    "fluid.create.sap": "Tree Sap",
+    "fluid.create.syrup": "Syrup",
+
+    "fluid.create.juice_gooseberry": "Gooseberry Juice",
+    "fluid.create.juice_apple": "Apple Juice",
+    "fluid.create.juice_chorus": "Chorus Juice",
+    "fluid.create.juice_sea_pickle": "Sea Pickle Juice",
+    "fluid.create.juice_cactus": "Cactus Juice",
+    "fluid.create.juice_berry": "Berry Juice",
+    "fluid.create.juice_p8": "P8 Juice",
+
+    "fluid.create.juice_melon": "Melon Juice",
+    "fluid.create.jam_gooseberry": "Gooseberry Jam",
+    "fluid.create.jam_mulberry": "Mulberry Jam",
+    "fluid.create.jam_berry": "Berry Jam",
+
+    "fluid.create.coffee": "Coffee",
+    "fluid.create.coffee_espresso": "Espresso",
+    "fluid.create.coffee_latte": "Latte",
+    "fluid.create.coffee_macchiato": "Macchiato",
+    "fluid.create.coffee_mocha": "Mocha",
+    "fluid.create.coffee_frappe": "Frappe",
+    "fluid.create.cocoa": "Cocoa",
+    
+	"fluid.create.ice_cream_vanilla": "Vanilla Ice Cream",
+    "fluid.create.ice_cream_chocolate": "Chocolate Ice Cream",
+    "fluid.create.ice_cream_strawberry": "Strawberry Ice Cream",
+    "fluid.create.ice_cream_neapolitan": "Neapolitan Ice Cream",
+    "fluid.create.ice_cream_banana": "Banana Ice Cream",
+    "fluid.create.ice_cream_adzuki": "Adzuki Ice Cream",
+    "fluid.create.ice_cream_mint": "Mint Ice Cream",
+    
+	"fluid.create.milk_shake_vanilla": "Vanilla Milk Shake",
+    "fluid.create.milk_shake_chocolate": "Chocolate Milk Shake",
+    "fluid.create.milk_shake_strawberry": "Strawberry Milk Shake",
+    "fluid.create.milk_shake_mint": "Mint Milk Shake",
+    "fluid.create.milk_shake_adzuki": "Adzuki Milk Shake",
+    "fluid.create.milk_shake_banana": "Banana Milk Shake",
+    "fluid.create.milk_shake_neapolitan": "Neapolitan Milk Shake",
+    
+	"fluid.create.smoothie_apple": "Apple Smoothie",
+    "fluid.create.smoothie_berry": "Berry Smoothie",
+    "fluid.create.smoothie_melon": "Melon Smoothie",
+    
+	"fluid.create.jelly_melon": "Melon Jelly",
+    "fluid.create.jelly_berry": "Berry Jelly",
+    "fluid.create.jelly_apple": "Apple Jelly",
+    "fluid.create.jelly_magma": "Magma Jelly",
+    "fluid.create.jelly_slime": "Slime Jelly",
+    
+	"fluid.create.stock": "Stock",
+    "fluid.create.soup_beetroot": "Beetroot Soup",
+    "fluid.create.soup_pumpkin": "Pumpkin Soup",
+    "fluid.create.soup_potato": "Potato Soup",
+    "fluid.create.soup_carrot": "Carrot Soup",
+    "fluid.create.soup_noddle": "Noddle Soup",
+    
+	"fluid.create.cream": "Cream",
+    
+	"fluid.create.yogurt": "Yogurt",
+    "fluid.create.yogurt_chocolate": "Chocolate Yogurt",
+    "fluid.create.yogurt_caramel": "Caramel Yogurt",
+    "fluid.create.yogurt_pumpkin": "Pumpkin Yogurt",
+    "fluid.create.yogurt_berry": "Berry Yogurt",
+    "fluid.create.yogurt_apple": "Apple Yogurt",
+    
+	"fluid.create.mayonaise": "Mayonaise",
+    "fluid.create.oil_cooking": "Cooking Oil",
+    "fluid.create.vinegar": "Vinegar"
 
 }

@@ -2,6 +2,13 @@
   "replace": false,
   "values": [
     "create:flowing_milk",
-    "create:milk"
+    "create:milk",
+    "create:flowing_milk_chocolate",
+    "create:milk_chocolate",
+    "create:flowing_milk_berry",
+    "create:milk_berry",
+
+    "create:flowing_cream",
+    "create:cream"
   ]
 }

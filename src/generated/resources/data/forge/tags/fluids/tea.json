@@ -2,6 +2,16 @@
   "replace": false,
   "values": [
     "create:flowing_tea",
-    "create:tea"
+    "create:tea",
+    "create:flowing_tea_lavender",
+    "create:tea_lavender",
+    "create:flowing_tea_green",
+    "create:tea_green",
+    "create:flowing_tea_chorus",
+    "create:tea_chorus",
+    "create:flowing_tea_dandelion",
+    "create:tea_dandelion",
+    "create:flowing_tea_black",
+    "create:tea_black"
   ]
 }
